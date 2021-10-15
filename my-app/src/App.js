@@ -1,10 +1,10 @@
 // import logo from './logo.svg';
 import './App.css';
-import HomesQuestFunction from "./modules/homes Quest/HomesQuestFunction";
+import Homes_quest_function from "./modules/homes_quest/homes_quest_function";
 
 function App() {
   return (
-    <HomesQuestFunction />
+    <Homes_quest_function />
     // <div className="container_block">
     //   <div className="container_title">
     //     <h2 className="title_text">Homes guests loves </h2>

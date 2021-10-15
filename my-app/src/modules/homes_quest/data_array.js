@@ -1,4 +1,5 @@
-export const data = [
+import React from 'react';
+const data = [
 	{
 		id: '71ce9eac-e9b9-44f0-a342-9ff0b565f3b7',
 		name: 'Hotel Leopold',
