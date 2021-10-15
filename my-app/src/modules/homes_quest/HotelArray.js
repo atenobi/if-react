@@ -1,5 +1,4 @@
-import React from 'react';
-const data = [
+const HotelArray = [
 	{
 		id: '71ce9eac-e9b9-44f0-a342-9ff0b565f3b7',
 		name: 'Hotel Leopold',
@@ -58,4 +57,4 @@ const data = [
 	},
 ];
 
-export default data;
+export default HotelArray;
