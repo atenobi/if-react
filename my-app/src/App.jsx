@@ -1,11 +1,13 @@
 import React from 'react';
 
 // components
-import SectionWithTitle from './modules/homes_quest/SectionWithTitle';
+import MainSection from './modules/hotel_info_section/MainSection';
+import hotelArray from './modules/constants/hotelArray';
 
-// styles
-import './index.css';
+const App = () => {
+  const dataArray = hotelArray.slice(0, 4);
 
-const App = () => (<SectionWithTitle title="Homes guests loves" />);
+  return (<MainSection title="Homes guests loves" array={dataArray} />);
+};
 
 export default App;
