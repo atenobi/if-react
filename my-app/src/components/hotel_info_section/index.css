@@ -1,18 +1,3 @@
-
-.App {
-    text-align: center;
-}
-
-.container_block {
-    width: 1440px;
-    height: 828px;
-    margin: 40px auto 40px;
-    background-color: #EAF0F9;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-}
-
 .container_title {
     text-align: center;
     margin: 120px auto 100px;
