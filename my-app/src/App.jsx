@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 // components
-import MainSection from './components/hotel_info_section/MainSection';
-import UserSearchForm from './components/user_search/UserSearcForm';
+import MainSection from './components/hotelInfoSection/MainSection';
+import UserSearchForm from './components/userSearch/UserSearcForm';
 
 // constants
 import hotelArray from './constants/hotelArray';
@@ -20,7 +20,7 @@ const App = () => {
         <UserSearchForm setHotels={setHotels} />
       </div>
       <div className="block_body">
-        {hotels?.length >= 1 ?? <MainSection title="Available hotels" array={hotels} />}
+        {hotels?.length >= 1 && <MainSection title="Available hotels" array={hotels} />}
       </div>
       <div className="block_body">
         <MainSection title="Homes guests loves" array={dataArray} />
