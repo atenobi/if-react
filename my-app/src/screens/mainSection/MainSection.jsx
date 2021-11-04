@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // components
-import HotelItemMaker from './HotelItemMaker';
+import HotelItemMaker from '../../components/mainSectionBodyContent/HotelItemMaker';
 
 // styles
 import './index.css';

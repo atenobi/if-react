@@ -6,7 +6,7 @@ const SearchInput = ({ onChangeFunc, text }) => (
     <input
       className="form_input top_section__form_input--destination text_lg"
       placeholder={text}
-      onChange={(e) => onChangeFunc(e)}
+      onChange={onChangeFunc}
     />
   </>
 );

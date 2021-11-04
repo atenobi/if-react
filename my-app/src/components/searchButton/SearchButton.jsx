@@ -5,7 +5,7 @@ const SearchButton = ({ text, onClickFunc }) => (
   <button
     className="top_section__form_input--button form_input text_lg"
     type="submit"
-    onClick={() => onClickFunc()}
+    onClick={onClickFunc}
   >
     {text}
   </button>

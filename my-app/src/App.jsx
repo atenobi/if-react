@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-// components
-import MainSection from './components/hotelInfoSection/MainSection';
-import UserSearchForm from './components/userSearch/UserSearcForm';
+// screens
+import MainSection from './screens/mainSection/MainSection';
+import TopSection from './screens/topSection/TopSection';
 
 // constants
 import hotelArray from './constants/hotelArray';
@@ -16,9 +16,7 @@ const App = () => {
 
   return (
     <>
-      <div className="block_body">
-        <UserSearchForm setHotels={setHotels} />
-      </div>
+      <TopSection setHotels={setHotels} />
       <div className="block_body">
         {hotels?.length >= 1 && <MainSection title="Available hotels" array={hotels} />}
       </div>

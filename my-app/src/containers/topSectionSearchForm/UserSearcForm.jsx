@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 // components
-import SearchInput from './searchInput/SearchInput';
-import SearchButton from './searchButton/SearchButton';
+import SearchInput from '../../components/searchInput/SearchInput';
+import SearchButton from '../../components/searchButton/SearchButton';
 
 // constants
 import hotelArray from '../../constants/hotelArray';
 
 // functions helpers
-import textFormatter from '../../helpersFunctions/textFormatter';
+import textFormatter from '../../utils/textFormatter';
 
 // styles
 import './index.css';

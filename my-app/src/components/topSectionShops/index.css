@@ -1,0 +1,19 @@
+.top_section__shops{
+    width: 100%;
+    margin: 120px auto;
+    padding-bottom: 120px;
+    display: flex;
+    justify-content: center;
+}
+
+.shop {
+    width: 135px;
+    height: 40px;
+}
+
+.top_section__shops--google {
+}
+
+.top_section__shops--apple {
+    padding-left: 20px;
+}

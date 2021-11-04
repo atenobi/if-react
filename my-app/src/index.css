@@ -1,16 +1,4 @@
-/*body {*/
-/*  margin: 0;*/
-/*  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',*/
-/*    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',*/
-/*    sans-serif;*/
-/*  -webkit-font-smoothing: antialiased;*/
-/*  -moz-osx-font-smoothing: grayscale;*/
-/*}*/
-
-/*code {*/
-/*  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',*/
-/*    monospace;*/
-/*}*/
+@import "assets/fonts.css";
 
 * {
     padding: 0;
@@ -41,9 +29,20 @@ html {
     line-height: 2px;
 }
 
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .text_lg {
     font-size: 12rem;
     line-height: 14rem;
+}
+
+.text_no_decor {
+    text-decoration: none;
 }
 
 .container {
@@ -68,3 +67,4 @@ html {
     max-height: 100%;
     margin: 0;
 }
+
