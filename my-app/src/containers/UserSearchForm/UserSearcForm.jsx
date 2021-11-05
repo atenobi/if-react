@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 // components
-import SearchInput from '../../components/searchInput/SearchInput';
-import SearchButton from '../../components/searchButton/SearchButton';
+import SearchInput from '../../components/SearchInput/SearchInput';
+import SearchButton from '../../components/SearchButton/SearchButton';
 
 // constants
 import hotelArray from '../../constants/hotelArray';

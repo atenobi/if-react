@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // components
-import TopSectionHeader from '../../containers/topSectionHeader/TopSectionHeader';
-import TopSectionTitle from '../../components/topSectionTitle/TopSectionTitle';
-import UserSearchForm from '../../containers/topSectionSearchForm/UserSearcForm';
-import TopSectionShops from '../../components/topSectionShops/TopSectionShops';
+import TopSectionHeader from '../../containers/TopSectionHeader/TopSectionHeader';
+import TopSectionTitle from '../../components/TopSectionTitle/TopSectionTitle';
+import UserSearchForm from '../../containers/UserSearchForm/UserSearcForm';
+import TopSectionShops from '../../components/TopSectionShops/TopSectionShops';
 
 // styles
 import './index.css';

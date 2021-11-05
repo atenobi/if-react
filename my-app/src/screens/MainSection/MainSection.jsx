@@ -2,22 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // components
-import HotelItemMaker from '../../components/mainSectionBodyContent/HotelItemMaker';
+import HotelItemMaker from '../../components/HotelItemMaker/HotelItemMaker';
 
 // styles
 import './index.css';
 
-const MainSection = (props) => (
+const MainSection = ({ title, array }) => (
   <>
     <div className="container_block">
       <div className="container_title">
         <h2 className="title_text">
-          {props.title}
+          {title}
           {' '}
         </h2>
       </div>
       <div className="container_content">
-        <HotelItemMaker data={props.array} />
+        <HotelItemMaker data={array} />
       </div>
     </div>
   </>
