@@ -4,6 +4,9 @@ import React from 'react';
 import TextLink from '../../components/links/TextLink';
 import ImageLink from '../../components/links/ImageLink';
 
+// constants
+import egg from '../../constants/egg';
+
 // styles
 import './index.css';
 
@@ -18,7 +21,7 @@ const TopSectionHeader = () => {
 
   return (
     <div className="top_section__header row">
-      <ImageLink id="logo_triphouse" link="#" cssClass={cssClass.logo} />
+      <ImageLink id="logo_triphouse" link={egg} cssClass={cssClass.logo} />
       <div className="top_section__nav row">
         <div className="top_section__nav--container row">
           <TextLink text="Stays" link="#" cssClass={cssClass.stays} />

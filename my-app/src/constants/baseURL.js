@@ -1,2 +1,2 @@
-const baseUrl = 'https://fe-student-api.herokuapp.com/api/hotels/popular';
-export default baseUrl;
+const baseURL = 'https://fe-student-api.herokuapp.com/api/';
+export default baseURL;

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import MainSection from '../MainSection/MainSection';
 
 // constants
-import baseUrl from '../../constants/baseURL';
 import hotelArray from '../../constants/hotelArray';
+import baseURL from '../../constants/baseURL';
 
 export default class HomesQuestLoves extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ export default class HomesQuestLoves extends Component {
   }
 
   componentDidMount() {
-    fetch(baseUrl)
+    fetch(`${baseURL}hotels/popular`)
       .then((res) => res.json())
       .then(
         (result) => {

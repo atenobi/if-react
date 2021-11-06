@@ -4,5 +4,5 @@
     padding-top: 1px;
     background: var(--primary-dark);
     background-position: top;
-    /*background-image: url("src/assets/background_image.jpg");*/
+    background-image: url("../../assets/background_image.jpg");
 }

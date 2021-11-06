@@ -25,6 +25,13 @@
     /*margin-left: 30px;*/
 }
 
+/*.input_destination--label {*/
+/*    position: absolute;*/
+/*    bottom: 138%;*/
+/*    left: 7%;*/
+/*    color: var(--general-white);*/
+/*}*/
+
 .top_section__form_input--button {
     width: 188px;
     background-color: var(--primary);

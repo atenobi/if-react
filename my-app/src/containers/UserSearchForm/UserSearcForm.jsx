@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 // components
@@ -6,30 +6,49 @@ import SearchInput from '../../components/SearchInput/SearchInput';
 import SearchButton from '../../components/SearchButton/SearchButton';
 
 // constants
-import hotelArray from '../../constants/hotelArray';
+import baseURL from '../../constants/baseURL';
 
 // functions helpers
-import textFormatter from '../../utils/textFormatter';
+import saveParamsToUrl from '../../utils/saveParamsToUrl';
 
 // styles
 import './index.css';
 
+// eslint-disable-next-line react/prop-types
 const UserSearchForm = ({ setHotels }) => {
+  const hotelsApi = `${baseURL}hotels?`;
   const [userStr, setUserStr] = useState('');
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [apiHotels, setApiHotels] = useState([]);
 
   const handleChange = (e) => setUserStr(e.target.value);
 
-  const handleClick = () => {
-    const searchedHotels = [];
+  useEffect(() => {
+    fetch(apiHotels)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setHotels(result);
+        },
 
-    hotelArray.forEach((el) => {
-      if (textFormatter(el.city).includes(textFormatter(userStr))
-        || textFormatter(el.name).includes(textFormatter(userStr))
-        || textFormatter(el.country).includes(textFormatter(userStr))) {
-        searchedHotels.push(el);
-      }
-    });
-    setHotels(searchedHotels);
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        },
+      );
+    if (error) {
+      console.log(error.message);
+    }
+    if (!isLoaded) {
+      console.log('Loading...');
+    }
+  }, [apiHotels]);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setApiHotels(saveParamsToUrl('search', userStr, hotelsApi));
   };
 
   return (

@@ -9,15 +9,9 @@ import TopSectionShops from '../../components/TopSectionShops/TopSectionShops';
 
 // styles
 import './index.css';
-import BackgroundImage from '../../assets/background_image.jpg';
 
 const TopSection = ({ setHotels }) => (
-  <div
-    className="block_body top_section"
-    style={{
-      backgroundImage: `url(${BackgroundImage})`,
-    }}
-  >
+  <div className="block_body top_section">
     <div className="container">
       <TopSectionHeader />
       <TopSectionTitle />
