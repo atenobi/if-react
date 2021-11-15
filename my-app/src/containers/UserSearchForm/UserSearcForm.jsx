@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 // components
 import SearchInput from '../../components/SearchInput/SearchInput';
+import Persons from '../../components/Persons/Persons';
 import SearchButton from '../../components/SearchButton/SearchButton';
 
 // constants
@@ -13,8 +14,8 @@ import saveParamsToUrl from '../../utils/saveParamsToUrl';
 
 // styles
 import './index.css';
+import Calendar from '../../components/Calendar/Calendar';
 
-// eslint-disable-next-line react/prop-types
 const UserSearchForm = ({ setHotels }) => {
   const hotelsApi = `${baseURL}hotels?`;
   const [userStr, setUserStr] = useState('');
@@ -55,8 +56,25 @@ const UserSearchForm = ({ setHotels }) => {
     <>
       <div className="container">
         <div className="top_section__form">
-          <SearchInput text="New York" onChangeFunc={handleChange} />
-          <SearchButton text="Search" onClickFunc={handleClick} />
+          <div className="top_section__form--input_container">
+            <SearchInput text="New York" onChangeFunc={handleChange} />
+          </div>
+          <div className="top_section__form--input_container">
+            <div className="form_calendar__container row">
+              <Calendar />
+              <Calendar />
+            </div>
+          </div>
+
+          <div className="top_section__form--input_container">
+            <div className="form_persons_container">
+              <Persons />
+            </div>
+          </div>
+
+          <div className="top_section__form--input_container">
+            <SearchButton text="Search" onClickFunc={handleClick} />
+          </div>
         </div>
       </div>
     </>

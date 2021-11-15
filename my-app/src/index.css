@@ -41,8 +41,22 @@ html {
     line-height: 14rem;
 }
 
+.text_md {
+    font-size: 10rem;
+    line-height: 11rem;
+}
+
 .text_no_decor {
     text-decoration: none;
+}
+
+.hidden_element {
+    visibility: hidden;
+    position: absolute;
+}
+
+.visible_element {
+    visibility: visible;
 }
 
 .container {
