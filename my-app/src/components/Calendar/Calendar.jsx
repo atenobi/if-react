@@ -5,18 +5,21 @@ import Wrapper from './Wrapper/Wrapper';
 import wrapperBody from './Wrapper/wrapperBody';
 
 // constants
-import Date from '../../constants/date';
+import date from '../../constants/date';
 
 // styles
 import './index.css';
 
 const Calendar = () => {
-  const [active, setActive] = useState(false);
-  const [dateInput, setDateInput] = useState(Date.currentFullDate());
-  const [month, setMonth] = useState(Date.currentMonth);
-  const [year, setYear] = useState(Date.currentYear);
+  const [activeWrapper, setActiveWrapper] = useState(false);
+  const [dateInput, setDateInput] = useState(date.currentFullDate());
+  const [month, setMonth] = useState(date.currentMonth);
+  const [year, setYear] = useState(date.currentYear);
+  const arrayDay = [[], [], [], [], [], []];
 
-  const handleClick = () => ((active === false) ? setActive(true) : setActive(false));
+  wrapperBody(month, year, arrayDay);
+
+  const handleClick = () => ((activeWrapper) ? setActiveWrapper(false) : setActiveWrapper(true));
 
   return (
     <>
@@ -27,17 +30,21 @@ const Calendar = () => {
           className="form_input"
           onClick={handleClick}
         />
-        <Wrapper
-          active={active}
-          days={wrapperBody(month, year)}
-          week={Date.weekArray}
-          curMonth={month}
-          monthText={Date.monthArray[month]}
-          curYear={year}
-          yearSetter={setYear}
-          dateSetter={setDateInput}
-          monthSetter={setMonth}
-        />
+        <div>
+          <Wrapper
+            active={activeWrapper}
+            days={arrayDay}
+            week={date.weekArray}
+            curMonth={month}
+            monthText={date.monthArray[month]}
+            curDay={date.currentDay}
+            curYear={year}
+            yearSetter={setYear}
+            dateSetter={setDateInput}
+            monthSetter={setMonth}
+          />
+
+        </div>
       </div>
     </>
   );

@@ -1,20 +1,31 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import moment from 'moment';
+import date from '../../../constants/date';
 
-const wrapperBody = (m, y) => {
-  const arrayDay = [[], [], [], [], []];
-
+const wrapperBody = (m, y, arrayDay) => {
   const dayOfWeek = 7;
-  let week = 0;
 
   const startOfMonth = new Date(y, m, 1);
   const endOfMonth = new Date(y, m + 1, 0);
-
   const startMonth = moment(startOfMonth).format('DD');
   const endMonth = moment(endOfMonth).format('DD');
+  const startMonthText = moment(new Date(y, m, +startMonth)).format('dddd');
 
-  const reducer = (prev, current) => prev.concat(current);
+  const reducerFunc = (prev, current) => prev.concat(current);
 
-  for (let day = +startMonth; arrayDay.reduce(reducer).length < +endMonth; day += 1) {
+  let monthLength = +endMonth;
+
+  for (let i = 0; i < date.weekArray.length; i += 1) {
+    if (startMonthText !== date.weekArray[i]) {
+      arrayDay[0].unshift(null);
+      monthLength += 1;
+    } else {
+      break;
+    }
+  }
+
+  let week = 0;
+  for (let day = +startMonth; arrayDay.reduce(reducerFunc).length < monthLength; day += 1) {
     if (arrayDay[week].length === dayOfWeek) {
       week += 1;
       arrayDay[week].push(day);
@@ -22,7 +33,6 @@ const wrapperBody = (m, y) => {
       arrayDay[week].push(day);
     }
   }
-  return arrayDay;
 };
 
 export default wrapperBody;

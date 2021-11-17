@@ -1,18 +1,25 @@
 import React from 'react';
 import PropTypes, { arrayOf, number, string } from 'prop-types';
 
+// constants
+import date from '../../../constants/date';
+
 const Wrapper = ({
-  active, days, week, curMonth, monthText, yearSetter, curYear, dateSetter, monthSetter,
+  active, days, week, curDay, curMonth,
+  monthText, yearSetter, curYear, dateSetter, monthSetter,
 }) => {
   const january = 0;
   const december = 11;
 
   const monthMinusPlus = () => {
-    if (curMonth !== january) {
+    if (curMonth !== january && curMonth > date.currentMonth && curYear > date.currentYear) {
       monthSetter(curMonth - 1);
-    } else {
+    } else if (curYear > date.currentYear) {
       monthSetter(december);
       yearSetter(curYear - 1);
+    } else {
+      monthSetter(date.currentMonth);
+      yearSetter(date.currentYear);
     }
   };
 
@@ -26,8 +33,12 @@ const Wrapper = ({
   };
 
   return (
-    <div className={active ? 'calendar_wrapper visible_element' : 'hidden_element'}>
-      <div className="row">
+    <div
+      className={active ? 'calendar_wrapper visible_element' : 'hidden_element'}
+    >
+      <div
+        className="row"
+      >
         <button
           type="submit"
           className="text_lg calendar_wrapper_button"
@@ -50,7 +61,7 @@ const Wrapper = ({
         </button>
       </div>
       <table>
-        <thead className="text_lg">
+        <thead className="text_md">
           <tr>
             {week.map((el) => (
               <td
@@ -63,22 +74,28 @@ const Wrapper = ({
           </tr>
         </thead>
         <tbody className="calendar_wrapper__body text_md">
-
-          {/* in work */}
-          {days.map((el) => (
+          {days.map((weekArr) => (
             <tr
-              key={el}
+              key={weekArr}
             >
-              {el.map((elem) => (
+              {weekArr.map((dayNum) => (
                 <td
-                  key={elem}
+                  key={dayNum}
                 >
                   <button
+                    key={dayNum}
                     type="submit"
-                    className="calendar_wrapper_body_item"
-                    onClick={() => dateSetter(`${elem} ${monthText} ${curYear}`)}
+                    className={(dayNum === curDay
+                      && curMonth === date.currentMonth
+                      && curYear === date.currentYear) ? 'calendar_wrapper_cur_item'
+                      : (dayNum < curDay
+                        && curMonth === date.currentMonth
+                        && curYear === date.currentYear) ? 'calendar_wrapper_past_item'
+                        : (dayNum === null) ? 'hidden_element'
+                          : 'calendar_wrapper_body_item'}
+                    onClick={() => dateSetter(`${dayNum} ${monthText} ${curYear}`)}
                   >
-                    {elem}
+                    {dayNum}
                   </button>
                 </td>
               ))}
@@ -93,10 +110,11 @@ const Wrapper = ({
 
 Wrapper.propTypes = {
   active: PropTypes.bool.isRequired,
-  days: PropTypes.arrayOf(arrayOf(number)).isRequired, // in work
+  days: PropTypes.arrayOf(arrayOf(number)).isRequired,
   week: PropTypes.arrayOf(string).isRequired,
   curMonth: PropTypes.number.isRequired,
   monthText: PropTypes.string.isRequired,
+  curDay: PropTypes.number.isRequired,
   curYear: PropTypes.number.isRequired,
   yearSetter: PropTypes.func.isRequired,
   dateSetter: PropTypes.func.isRequired,

@@ -8,10 +8,15 @@
     width: 290px;
     height: 265px;
     padding: 15px;
-    background: #F3F3F4;
+    background: var(--general-white);
+    border: 1px solid var(--secondary);
     border-radius: 8px;
     font-size: 20px;
     text-align: center;
+}
+
+.calendar_wrapper:hover {
+    z-index: 1;
 }
 
 .calendar_wrapper__head {
@@ -19,7 +24,7 @@
 }
 
 .calendar_wrapper_head_item {
-    padding: 10px 3px;
+    padding: 5px;
 }
 
 .year_select {
@@ -30,7 +35,7 @@
 
 .calendar_wrapper_button {
     width: 30px;
-    height: 30px;
+    height: 28px;
     outline: none;
     border: hidden;
     font-size: 20px;
@@ -48,10 +53,38 @@
 }
 
 .calendar_wrapper_body_item {
+    width: 34px;
+    height: 28px;
     outline: none;
     border: hidden;
     padding: 5px;
     border-radius: 6px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.calendar_wrapper_cur_item {
+    width: 34px;
+    height: 28px;
+    outline: none;
+    border: hidden;
+    padding: 5px;
+    background-color: var(--primary);
+    color: var(--general-white);
+    text-align: center;
+    font-size: 17px;
+}
+
+.calendar_wrapper_past_item {
+    width: 34px;
+    height: 29px;
+    outline: none;
+    border: hidden;
+    padding: 5px;
+    background-color: var(--general-white);
+    color: var(--secondary-text);
+    text-align: center;
+    font-size: 17px;
 }
 
 .calendar_wrapper_body_item:hover {
