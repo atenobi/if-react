@@ -5,7 +5,7 @@ import PropTypes, { arrayOf, number, string } from 'prop-types';
 import date from '../../../constants/date';
 
 const Wrapper = ({
-  active, days, week, curDay, curMonth,
+  days, week, curDay, curMonth,
   monthText, yearSetter, curYear, dateSetter, monthSetter,
 }) => {
   const january = 0;
@@ -34,7 +34,7 @@ const Wrapper = ({
 
   return (
     <div
-      className={active ? 'calendar_wrapper visible_element' : 'hidden_element'}
+      className="calendar_wrapper"
     >
       <div
         className="row"
@@ -78,9 +78,9 @@ const Wrapper = ({
             <tr
               key={weekArr}
             >
-              {weekArr.map((dayNum) => (
+              {weekArr.map((dayNum, index) => (
                 <td
-                  key={dayNum}
+                  key={index}
                 >
                   <button
                     key={dayNum}
@@ -109,7 +109,6 @@ const Wrapper = ({
 };
 
 Wrapper.propTypes = {
-  active: PropTypes.bool.isRequired,
   days: PropTypes.arrayOf(arrayOf(number)).isRequired,
   week: PropTypes.arrayOf(string).isRequired,
   curMonth: PropTypes.number.isRequired,

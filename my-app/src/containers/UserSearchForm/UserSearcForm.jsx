@@ -23,7 +23,29 @@ const UserSearchForm = ({ setHotels }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [apiHotels, setApiHotels] = useState([]);
 
+  const [cal1, setCal1] = useState(false);
+  const [cal2, setCal2] = useState(false);
+
   const handleChange = (e) => setUserStr(e.target.value);
+
+  const visibilityStatus = (e) => {
+    if (e.target.id === 'cal1') {
+      if (!cal1) {
+        setCal1(true);
+        setCal2(false);
+      } else {
+        setCal1(false);
+      }
+    }
+    if (e.target.id === 'cal2') {
+      if (!cal2) {
+        setCal2(true);
+        setCal1(false);
+      } else {
+        setCal2(true);
+      }
+    }
+  };
 
   useEffect(() => {
     fetch(apiHotels)
@@ -60,9 +82,19 @@ const UserSearchForm = ({ setHotels }) => {
             <SearchInput text="New York" onChangeFunc={handleChange} />
           </div>
           <div className="top_section__form--input_container">
-            <div className="form_calendar__container row">
-              <Calendar />
-              <Calendar />
+            <div
+              className="form_calendar__container row"
+            >
+              <Calendar
+                id="cal1"
+                activeWrapper={cal1}
+                showWrapper={visibilityStatus}
+              />
+              <Calendar
+                id="cal2"
+                activeWrapper={cal2}
+                showWrapper={visibilityStatus}
+              />
             </div>
           </div>
 
