@@ -1,0 +1,12 @@
+.top_section__title {
+    max-width: 542px;
+    max-height: 118px;
+    margin: 200px 2px 0;
+}
+
+.top_section__title--text {
+    font-weight: 500;
+    font-size: 25rem;
+    line-height: 30rem;
+    color: var(--general-white);
+}

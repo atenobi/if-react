@@ -1,0 +1,92 @@
+.calendar_input {
+    position: relative;
+}
+
+.calendar_wrapper {
+    position: absolute;
+    top: 65px;
+    width: 290px;
+    height: 265px;
+    padding: 15px;
+    background: var(--general-white);
+    border: 1px solid var(--secondary);
+    border-radius: 8px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.calendar_wrapper:hover {
+    z-index: 1;
+}
+
+.calendar_wrapper__head {
+    text-align: center;
+}
+
+.calendar_wrapper_head_item {
+    padding: 5px;
+}
+
+.year_select {
+    outline: none;
+    border: hidden;
+    -webkit-appearance: none;
+}
+
+.calendar_wrapper_button {
+    width: 30px;
+    height: 28px;
+    outline: none;
+    border: hidden;
+    font-size: 20px;
+    color: var(--general-white);
+    background: var(--primary);
+    border-radius: 6px;
+}
+
+.calendar_wrapper_button:hover {
+    background: var(--primary-dark);
+}
+
+.calendar_wrapper__body {
+
+}
+
+.calendar_wrapper_body_item {
+    width: 34px;
+    height: 28px;
+    outline: none;
+    border: hidden;
+    padding: 5px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.calendar_wrapper_cur_item {
+    width: 34px;
+    height: 28px;
+    outline: none;
+    border: hidden;
+    padding: 5px;
+    background-color: var(--primary);
+    color: var(--general-white);
+    text-align: center;
+    font-size: 17px;
+}
+
+.calendar_wrapper_past_item {
+    width: 34px;
+    height: 29px;
+    outline: none;
+    border: hidden;
+    padding: 5px;
+    background-color: var(--general-white);
+    color: var(--secondary-text);
+    text-align: center;
+    font-size: 17px;
+}
+
+.calendar_wrapper_body_item:hover {
+    background: var(--secondary-text);
+}

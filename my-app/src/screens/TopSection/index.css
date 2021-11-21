@@ -1,0 +1,8 @@
+.top_section {
+    width: 100vw;
+    max-height: 902px;
+    padding-top: 1px;
+    background: var(--primary-dark);
+    background-position: top;
+    background-image: url("../../assets/background_image.jpg");
+}
