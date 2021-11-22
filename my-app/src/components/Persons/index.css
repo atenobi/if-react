@@ -1,0 +1,98 @@
+.form_persons_text {
+    padding: 15px 0;
+    width: 231px;
+}
+
+.persons_count {
+    width: 260px;
+    height: 160px;
+    background-color: var(--general-white);
+    position: absolute;
+    top: 47px;
+    left: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 1px solid var(--secondary);
+}
+
+.count_item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 20px;
+}
+
+.counter_item_text {
+    font-size: 16px;
+    line-height: 19px;
+    padding-top: 7px;
+}
+
+.count_button_container {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.button_default_style {
+    height: 30px;
+    width: 30px;
+    border: 1px solid var(--secondary-text);
+    color: var(--secondary-text);
+}
+
+.button_changed_style {
+    height: 30px;
+    width: 30px;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+
+.child_age {
+    /*display: flex; */
+    /* align-items: start; */
+    /* justify-content: start; */
+    position: absolute;
+    top: 207px;
+    left: 41px;
+    width: 260px;
+    height: max-content;
+    text-align: left;
+    border-radius: 8px;
+    border: 1px solid var(--secondary);
+    background: var(--general-white);
+}
+
+.child_age_text {
+    font-size: 12px;
+    line-height: 14px;
+    font-style: normal;
+    margin: 10px 20px;
+}
+
+.child_age_selects {
+    background-color: var(--general-white);
+    width: 50%;
+    height: max-content;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.child_age_option_item {
+    z-index: 1;
+    width: 90%;
+    height: 20px;
+    margin: 5px auto;
+    box-sizing: border-box;
+    border-radius: 4px;
+    outline: var(--primary);
+    border: 1px solid var(--primary);
+}

@@ -46,6 +46,11 @@ html {
     line-height: 11rem;
 }
 
+.text_sm {
+    font-size: 8rem;
+    line-height: 10rem;
+}
+
 .text_no_decor {
     text-decoration: none;
 }

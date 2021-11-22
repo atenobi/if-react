@@ -25,6 +25,7 @@ const UserSearchForm = ({ setHotels }) => {
 
   const [cal1, setCal1] = useState(false);
   const [cal2, setCal2] = useState(false);
+  const [personsCounter, setPersonsCounter] = useState(false);
 
   const handleChange = (e) => setUserStr(e.target.value);
 
@@ -42,8 +43,16 @@ const UserSearchForm = ({ setHotels }) => {
         setCal2(true);
         setCal1(false);
       } else {
-        setCal2(true);
+        setCal2(false);
       }
+    }
+  };
+
+  const visibilityStatusPersonCounter = (e) => {
+    if (!personsCounter) {
+      setPersonsCounter(true);
+    } else {
+      setPersonsCounter(false);
     }
   };
 
@@ -100,7 +109,10 @@ const UserSearchForm = ({ setHotels }) => {
 
           <div className="top_section__form--input_container">
             <div className="form_persons_container">
-              <Persons />
+              <Persons
+                counter={personsCounter}
+                showCounter={visibilityStatusPersonCounter}
+              />
             </div>
           </div>
 

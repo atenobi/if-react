@@ -5,6 +5,7 @@
 .calendar_wrapper {
     position: absolute;
     top: 65px;
+    right: -80px;
     width: 290px;
     height: 265px;
     padding: 15px;
