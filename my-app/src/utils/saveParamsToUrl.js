@@ -5,7 +5,6 @@ const saveParamsToUrl = (nameParam, valueParam, addressApi) => {
   URlUserParams.append(nameParam, valueParam);
 
   myResultUrl = addressApi + URlUserParams.toString();
-  console.log(myResultUrl);
   return myResultUrl;
 };
 

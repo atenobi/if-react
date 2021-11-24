@@ -17,7 +17,7 @@ const MainSection = ({ title, array }) => (
         </h2>
       </div>
       <div className="container_content">
-        <HotelItemMaker data={array} />
+        {array.map((el) => (<HotelItemMaker data={el} id={el.id} key={el.id} />))}
       </div>
     </div>
   </>
