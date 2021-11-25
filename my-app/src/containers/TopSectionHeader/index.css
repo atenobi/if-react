@@ -66,3 +66,7 @@
     width: 40px;
     height: 40px;
 }
+
+.top_section__settings--image-pushed {
+    fill: var(--secondary);
+}

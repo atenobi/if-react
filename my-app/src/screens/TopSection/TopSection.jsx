@@ -10,19 +10,20 @@ import TopSectionShops from '../../components/TopSectionShops/TopSectionShops';
 // styles
 import './index.css';
 
-const TopSection = ({ setHotels }) => (
+const TopSection = ({ setUser, setPassword }) => (
   <div className="block_body top_section">
     <div className="container">
-      <TopSectionHeader />
+      <TopSectionHeader itsEmpty={false} setUser={setUser} setPassword={setPassword} />
       <TopSectionTitle />
-      <UserSearchForm setHotels={setHotels} />
+      <UserSearchForm />
       <TopSectionShops />
     </div>
   </div>
 );
 
 TopSection.propTypes = {
-  setHotels: PropTypes.func.isRequired,
+  setUser: PropTypes.func.isRequired,
+  setPassword: PropTypes.func.isRequired,
 };
 
 export default TopSection;

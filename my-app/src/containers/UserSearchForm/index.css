@@ -1,3 +1,10 @@
+.top_section_form__container {
+    max-width: 1264px;
+    height: 8%;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
 .top_section__form {
     width: 99%;
     max-height: 100%;
