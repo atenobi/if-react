@@ -6,7 +6,7 @@ import PersonsCountItem from './PersonsCountItem/PersonsCountItem';
 import ChildrenAgeSelect from './ChildrenAgeSelect/ChildernAgeSelect';
 
 // constants
-import personsValues from '../../../../../time/src/constants/personsValues';
+import personsValues from '../../constants/personsValues';
 
 // styles
 import './index.css';
@@ -21,10 +21,10 @@ const Persons = ({ counter, showCounter }) => {
   const test = () => setChildCounter((childCounter) => childCounter.slice(0, (childCounter.length - 1)));
 
   const decreaseValue = (func, value, min, text) => {
-    if (text === 'Children' && childCounter.length > 0 && value > min ) {
+    if (text === 'Children' && childCounter.length > 0 && value > min) {
       func(value -= 1);
       test();
-    } else  if (value > min) {
+    } else if (value > min) {
       func(value -= 1);
     }
   };
@@ -96,13 +96,12 @@ const Persons = ({ counter, showCounter }) => {
             <p className="child_age_text">What is the age of the child you’re travelling with?</p>
             <div className="child_age_selects">
               {childCounter.map((el, index) => (
-                  <ChildrenAgeSelect
-                    key={index}
-                    childAge={childAge}
-                    setChildAge={setChildAge}
-                  />
-                ))
-              }
+                <ChildrenAgeSelect
+                  key={index}
+                  childAge={childAge}
+                  setChildAge={setChildAge}
+                />
+              ))}
             </div>
           </div>
         )}
