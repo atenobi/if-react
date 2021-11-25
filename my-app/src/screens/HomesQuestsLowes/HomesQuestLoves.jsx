@@ -1,49 +1,37 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import MainSection from '../MainSection/MainSection';
 
 // constants
-import hotelArray from '../../constants/hotelArray';
 import baseURL from '../../constants/baseURL';
 
-export default class HomesQuestLoves extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      items: { hotelArray },
-    };
-  }
+const HomesQuestLoves = () => {
+  const [loadStatus, setLoadStatus] = useState(false);
+  let error = null;
+  const [hotels, setHotels] = useState([]);
 
-  componentDidMount() {
+  useEffect(() => {
     fetch(`${baseURL}hotels/popular`)
       .then((res) => res.json())
       .then(
         (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result,
-          });
+          setHotels(result);
+          setLoadStatus(true);
         },
-
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          });
+        (err) => {
+          error += err;
+          setLoadStatus(true);
         },
       );
-  }
+  }, [loadStatus]);
 
-  render() {
-    const { error, isLoaded, items } = this.state;
-    if (error) {
-      return <div>{error.message}</div>;
-    } if (!isLoaded) {
-      return <div>Загрузка...</div>;
-    }
-    return (
-      <MainSection title="Homes guests loves" array={items.slice(0, 4)} />
-    );
+  if (error) {
+    return <div>{error.message}</div>;
+  } if (!loadStatus) {
+    return <div>Загрузка...</div>;
   }
-}
+  return (
+    <MainSection title="Homes guests loves" array={hotels.slice(0, 4)} />
+  );
+};
+
+export default HomesQuestLoves;
