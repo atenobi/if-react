@@ -50,3 +50,17 @@
 .sing_in_submit_button:hover {
     background-color: var(--primary-dark);
 }
+
+.error_message {
+    width: 325px;
+    height: 45px;
+    border: 1px solid var(--general-white);
+    border-radius: 10px;
+    padding: 10px;
+    color: var(--general-white);
+    background-color: var(--secondary)
+}
+
+.error_message:hover {
+    background-color: var(--primary)
+}

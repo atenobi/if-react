@@ -28,7 +28,7 @@ const SingOutPage = ({ setUser, setPassword }) => {
       </button>
       <button
         className="text_lg sing_out_submit_button"
-        type="cancel"
+        type="submit"
         onClick={goBack}
       >
         Cancel
