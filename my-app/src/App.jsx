@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import { Context } from './utils/Context';
+import React, { useEffect, useState } from 'react';
+
+// contexts
+import HotelsContext from './Contexts/HotelsContext';
+import UserContext from './Contexts/UserContext';
+import PasswordContext from './Contexts/PasswordContext';
 
 // screens
 import MainSection from './screens/MainSection/MainSection';
 import TopSection from './screens/TopSection/TopSection';
-import TopSectionEmpty from './screens/TopSectionEmpty/TopSectionEmpty';
 import HomesQuestLoves from './screens/HomesQuestsLowes/HomesQuestLoves';
 
 // styles
@@ -14,24 +17,40 @@ const App = () => {
   const [hotels, setHotels] = useState([]);
   const [user, setUser] = useState(null);
   const [password, setPassword] = useState(null);
+  const [path, setPath] = useState('/');
+
+  useEffect(() => {
+    if (!user) {
+      setPath('/singIn');
+    } else {
+      setPath('/');
+    }
+    return function cleanUp() {
+      setHotels([]);
+    };
+  }, [user]);
 
   return (
     <>
-      {(!user && !password)
-        ? (
-          <TopSectionEmpty setUser={setUser} setPassword={setPassword} />
-        )
-        : (
-          <Context.Provider value={[hotels, setHotels]}>
-            <TopSection setUser={setUser} setPassword={setPassword} />
-            <div className="block_body">
-              {hotels?.length >= 1 && <MainSection title="Available hotels" array={hotels.slice(0, 4)} />}
-            </div>
-            <div className="block_body">
-              <HomesQuestLoves />
-            </div>
-          </Context.Provider>
-        )}
+      <HotelsContext.Provider value={[hotels, setHotels]}>
+        <UserContext.Provider value={[user, setUser]}>
+          <PasswordContext.Provider value={[password, setPassword]}>
+
+            <TopSection path={path} user={user} />
+            {user && (
+            <>
+              <div className="block_body">
+                {hotels?.length >= 1 && <MainSection title="Available hotels" array={hotels.slice(0, 4)} />}
+              </div>
+              <div className="block_body">
+                <HomesQuestLoves />
+              </div>
+            </>
+            )}
+
+          </PasswordContext.Provider>
+        </UserContext.Provider>
+      </HotelsContext.Provider>
     </>
   );
 };

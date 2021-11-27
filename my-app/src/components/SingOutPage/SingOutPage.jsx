@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
+
+// context
+import UserContext from '../../Contexts/UserContext';
+import PasswordContext from '../../Contexts/PasswordContext';
 
 // styles
 import './index.css';
 
-const SingOutPage = ({ setUser, setPassword }) => {
+const SingOutPage = () => {
+  const [, setUserContext] = useContext(UserContext);
+  const [, setPasswordContext] = useContext(PasswordContext);
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUser(null);
-    setPassword(null);
+    setUserContext(null);
+    setPasswordContext(null);
+    goBack();
   };
 
   return (
@@ -35,11 +41,6 @@ const SingOutPage = ({ setUser, setPassword }) => {
       </button>
     </div>
   );
-};
-
-SingOutPage.propTypes = {
-  setUser: PropTypes.func.isRequired,
-  setPassword: PropTypes.func.isRequired,
 };
 
 export default SingOutPage;

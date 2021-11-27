@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+// context
+import UserContext from '../../Contexts/UserContext';
+import PasswordContext from '../../Contexts/PasswordContext';
 
 // functions
 import mailVerification from '../../constants/mailVerification';
@@ -8,7 +11,9 @@ import mailVerification from '../../constants/mailVerification';
 // styles
 import './index.css';
 
-const SingInPage = ({ setUser, setPassword }) => {
+const SingInPage = () => {
+  const [, setUserContext] = useContext(UserContext);
+  const [, setPasswordContext] = useContext(PasswordContext);
   const navigate = useNavigate();
   const goBack = (step) => navigate(step);
   const [newUser, setNewUser] = useState('');
@@ -22,8 +27,8 @@ const SingInPage = ({ setUser, setPassword }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (mailVerification(newUser) && newPassword) {
-      setUser(newUser);
-      setPassword(newPassword);
+      setUserContext(newUser);
+      setPasswordContext(newPassword);
     } else if (!mailVerification(newUser)) {
       e.target.firstChild.className = 'error_message text_sm';
       e.target.firstChild.textContent = 'Please check the correctness of your mail.';
@@ -72,11 +77,6 @@ const SingInPage = ({ setUser, setPassword }) => {
       </form>
     </div>
   );
-};
-
-SingInPage.propTypes = {
-  setUser: PropTypes.func.isRequired,
-  setPassword: PropTypes.func.isRequired,
 };
 
 export default SingInPage;

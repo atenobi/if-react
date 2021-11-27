@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 // components
 import TextLink from '../../components/links/TextLink';
 import ImageLink from '../../components/links/ImageLink';
-import SingInPage from '../../components/SingInPage/SingInPage';
 import SingOutPage from '../../components/SingOutPage/SingOutPage';
 
 // Hoc
@@ -14,7 +13,7 @@ import MyRoutes from '../../MyRoutes/MyRoutes';
 // styles
 import './index.css';
 
-const TopSectionHeader = ({ itsEmpty, setUser, setPassword }) => {
+const TopSectionHeader = ({ user }) => {
   const cssClass = {
     logo: 'top_section--logo',
     stays: 'top_section__nav--link stays text_no_decor text_lg',
@@ -35,14 +34,17 @@ const TopSectionHeader = ({ itsEmpty, setUser, setPassword }) => {
         <div className="row">
           <ImageLink id="night_button" cssClass={cssClass.nightButton} />
 
-          <Link to={itsEmpty ? '/singIn' : '/singOut'}>
+          <Link to="/singOut">
             <ImageLink
               id="account_circle"
-              cssClass={cssClass.accountCircle}
+              cssClass={!user ? cssClass.imagePushed : cssClass.accountCircle}
             />
           </Link>
-          {itsEmpty ? (MyRoutes('/singIn', <SingInPage setUser={setUser} setPassword={setPassword} />))
-            : (MyRoutes('/singOut', <SingOutPage setUser={setUser} setPassword={setPassword} />))}
+          <MyRoutes
+            path="/singOut"
+            element={<SingOutPage />}
+          />
+
         </div>
       </div>
     </div>
@@ -50,9 +52,7 @@ const TopSectionHeader = ({ itsEmpty, setUser, setPassword }) => {
 };
 
 TopSectionHeader.propTypes = {
-  itsEmpty: PropTypes.bool.isRequired,
-  setUser: PropTypes.func.isRequired,
-  setPassword: PropTypes.func.isRequired,
+  user: PropTypes.string,
 };
 
 export default TopSectionHeader;

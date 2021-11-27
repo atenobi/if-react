@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Context } from '../../utils/Context';
+
+// context
+import HotelsContext from '../../Contexts/HotelsContext';
 
 // components
 import SearchInput from '../../components/SearchInput/SearchInput';
@@ -17,8 +19,7 @@ import './index.css';
 import Calendar from '../../components/Calendar/Calendar';
 
 const UserSearchForm = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [context, setContext] = useContext(Context);
+  const [, setContext] = useContext(HotelsContext);
   const hotelsApi = `${baseURL}hotels?`;
   const [userStr, setUserStr] = useState('');
   const [error, setError] = useState(null);
