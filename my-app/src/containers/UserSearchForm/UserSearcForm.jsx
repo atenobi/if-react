@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 // context
-import HotelsContext from '../../Contexts/HotelsContext';
+import MainContext from '../../Contexts/MainContext';
 
 // components
 import SearchInput from '../../components/SearchInput/SearchInput';
@@ -19,7 +19,7 @@ import './index.css';
 import Calendar from '../../components/Calendar/Calendar';
 
 const UserSearchForm = () => {
-  const [, setContext] = useContext(HotelsContext);
+  const { setHotels } = useContext(MainContext);
   const hotelsApi = `${baseURL}hotels?`;
   const [userStr, setUserStr] = useState('');
   const [error, setError] = useState(null);
@@ -65,7 +65,7 @@ const UserSearchForm = () => {
       .then(
         (result) => {
           setIsLoaded(true);
-          setContext(result);
+          setHotels(result);
         },
 
         (error) => {

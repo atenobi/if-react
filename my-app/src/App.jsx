@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 // contexts
-import HotelsContext from './Contexts/HotelsContext';
-import UserContext from './Contexts/UserContext';
-import PasswordContext from './Contexts/PasswordContext';
+import MainContext from './Contexts/MainContext';
 
 // screens
 import MainSection from './screens/MainSection/MainSection';
@@ -14,10 +12,8 @@ import HomesQuestLoves from './screens/HomesQuestsLowes/HomesQuestLoves';
 import './index.css';
 
 const App = () => {
-  const [hotels, setHotels] = useState([]);
-  const [user, setUser] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [path, setPath] = useState('/');
+  const { user, hotels, setHotels } = useContext(MainContext);
+  const [path, setPath] = useState('/singIn');
 
   useEffect(() => {
     if (!user) {
@@ -32,25 +28,17 @@ const App = () => {
 
   return (
     <>
-      <HotelsContext.Provider value={[hotels, setHotels]}>
-        <UserContext.Provider value={[user, setUser]}>
-          <PasswordContext.Provider value={[password, setPassword]}>
-
-            <TopSection path={path} user={user} />
-            {user && (
-            <>
-              <div className="block_body">
-                {hotels?.length >= 1 && <MainSection title="Available hotels" array={hotels.slice(0, 4)} />}
-              </div>
-              <div className="block_body">
-                <HomesQuestLoves />
-              </div>
-            </>
-            )}
-
-          </PasswordContext.Provider>
-        </UserContext.Provider>
-      </HotelsContext.Provider>
+      <TopSection path={path} />
+      {user && (
+      <>
+        <div className="block_body">
+          {hotels?.length >= 1 && <MainSection title="Available hotels" array={hotels.slice(0, 4)} />}
+        </div>
+        <div className="block_body">
+          <HomesQuestLoves />
+        </div>
+      </>
+      )}
     </>
   );
 };

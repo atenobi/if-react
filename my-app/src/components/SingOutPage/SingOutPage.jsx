@@ -2,22 +2,20 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // context
-import UserContext from '../../Contexts/UserContext';
-import PasswordContext from '../../Contexts/PasswordContext';
+import MainContext from '../../Contexts/MainContext';
 
 // styles
 import './index.css';
 
 const SingOutPage = () => {
-  const [, setUserContext] = useContext(UserContext);
-  const [, setPasswordContext] = useContext(PasswordContext);
+  const { setUser, setPassword } = useContext(MainContext);
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUserContext(null);
-    setPasswordContext(null);
+    setUser(null);
+    setPassword(null);
     goBack();
   };
 

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+
+// context
+import MainContext from '../../Contexts/MainContext';
 
 // components
 import TextLink from '../../components/links/TextLink';
@@ -13,7 +15,8 @@ import MyRoutes from '../../MyRoutes/MyRoutes';
 // styles
 import './index.css';
 
-const TopSectionHeader = ({ user }) => {
+const TopSectionHeader = () => {
+  const { user } = useContext(MainContext);
   const cssClass = {
     logo: 'top_section--logo',
     stays: 'top_section__nav--link stays text_no_decor text_lg',
@@ -49,10 +52,6 @@ const TopSectionHeader = ({ user }) => {
       </div>
     </div>
   );
-};
-
-TopSectionHeader.propTypes = {
-  user: PropTypes.string,
 };
 
 export default TopSectionHeader;

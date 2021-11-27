@@ -2,8 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // context
-import UserContext from '../../Contexts/UserContext';
-import PasswordContext from '../../Contexts/PasswordContext';
+import MainContext from '../../Contexts/MainContext';
 
 // functions
 import mailVerification from '../../constants/mailVerification';
@@ -12,8 +11,7 @@ import mailVerification from '../../constants/mailVerification';
 import './index.css';
 
 const SingInPage = () => {
-  const [, setUserContext] = useContext(UserContext);
-  const [, setPasswordContext] = useContext(PasswordContext);
+  const { setUser, setPassword } = useContext(MainContext);
   const navigate = useNavigate();
   const goBack = (step) => navigate(step);
   const [newUser, setNewUser] = useState('');
@@ -27,8 +25,8 @@ const SingInPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (mailVerification(newUser) && newPassword) {
-      setUserContext(newUser);
-      setPasswordContext(newPassword);
+      setUser(newUser);
+      setPassword(newPassword);
     } else if (!mailVerification(newUser)) {
       e.target.firstChild.className = 'error_message text_sm';
       e.target.firstChild.textContent = 'Please check the correctness of your mail.';
