@@ -26,7 +26,14 @@ const TopSection = ({ path }) => {
         <TopSectionHeader user={user} />
         {!user ? (
           <>
-            <Link to={path} />
+            <div className="sing_in_container">
+              <Link
+                to={path}
+                className="text_lg text_no_decor sing_in_text"
+              >
+                <h1>Sing in</h1>
+              </Link>
+            </div>
             <MyRoutes
               path={path}
               element={<SingInPage />}

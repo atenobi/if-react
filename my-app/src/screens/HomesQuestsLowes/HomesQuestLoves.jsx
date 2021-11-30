@@ -22,6 +22,9 @@ const HomesQuestLoves = () => {
           setLoadStatus(true);
         },
       );
+    return function cleanup() {
+      setHotels([]);
+    };
   }, [loadStatus]);
 
   if (error) {

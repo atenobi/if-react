@@ -39,7 +39,7 @@ const HotelItemMaker = ({ data, id }) => (
         </p>
       </div>
     </Link>
-    {MyRoutes(`hotels/${id}`, <HotelPage element={data} />)}
+    <MyRoutes path={`hotels/${id}`} element={<HotelPage element={data} />} />
   </>
 );
 
