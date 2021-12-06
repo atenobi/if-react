@@ -33,7 +33,9 @@ const HomesQuestLoves = () => {
     return <div>Загрузка...</div>;
   }
   return (
-    <MainSection title="Homes guests loves" array={hotels.slice(0, 4)} />
+    <div className="block_body">
+      <MainSection title="Homes guests loves" array={hotels.slice(0, 4)} />
+    </div>
   );
 };
 

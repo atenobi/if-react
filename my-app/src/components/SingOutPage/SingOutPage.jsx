@@ -16,7 +16,7 @@ const SingOutPage = () => {
     e.preventDefault();
     setUser(null);
     setPassword(null);
-    goBack();
+    navigate('/');
   };
 
   return (

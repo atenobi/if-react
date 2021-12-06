@@ -1,6 +1,4 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 // context
 import MainContext from '../../Contexts/MainContext';
@@ -18,24 +16,17 @@ import MyRoutes from '../../MyRoutes/MyRoutes';
 // styles
 import './index.css';
 
-const TopSection = ({ path }) => {
+const TopSection = () => {
   const { user } = useContext(MainContext);
+  console.log(user);
   return (
     <div className="block_body top_section">
       <div className="container">
-        <TopSectionHeader user={user} />
-        {!user ? (
+        <TopSectionHeader />
+        {(user === null) ? (
           <>
-            <div className="sing_in_container">
-              <Link
-                to={path}
-                className="text_lg text_no_decor sing_in_text"
-              >
-                <h1>Sing in</h1>
-              </Link>
-            </div>
             <MyRoutes
-              path={path}
+              path="/singIn"
               element={<SingInPage />}
             />
           </>
@@ -49,10 +40,6 @@ const TopSection = ({ path }) => {
       </div>
     </div>
   );
-};
-
-TopSection.propTypes = {
-  path: PropTypes.string.isRequired,
 };
 
 export default TopSection;

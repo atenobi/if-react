@@ -1,26 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // contexts
 import MainContext from './Contexts/MainContext';
 
 // screens
-import MainSection from './screens/MainSection/MainSection';
 import TopSection from './screens/TopSection/TopSection';
 import HomesQuestLoves from './screens/HomesQuestsLowes/HomesQuestLoves';
+import AvailableHotels from './screens/AvailableHotels/AvailableHotels';
 
 // styles
 import './index.css';
 
 const App = () => {
-  const { user, hotels, setHotels } = useContext(MainContext);
-  const [path, setPath] = useState('/singIn');
+  const navigate = useNavigate();
+  const { user, setHotels } = useContext(MainContext);
 
   useEffect(() => {
-    if (!user) {
-      setPath('/singIn');
-    } else {
-      setPath('/');
-    }
+    !(user === null) ? navigate('/') : navigate('/singIn');
+
     return function cleanUp() {
       setHotels([]);
     };
@@ -28,15 +26,11 @@ const App = () => {
 
   return (
     <>
-      <TopSection path={path} />
+      <TopSection />
       {user && (
       <>
-        <div className="block_body">
-          {hotels?.length >= 1 && <MainSection title="Available hotels" array={hotels.slice(0, 4)} />}
-        </div>
-        <div className="block_body">
-          <HomesQuestLoves />
-        </div>
+        <AvailableHotels />
+        <HomesQuestLoves />
       </>
       )}
     </>
