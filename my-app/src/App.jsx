@@ -1,40 +1,37 @@
 import React, { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 // contexts
 import MainContext from './Contexts/MainContext';
 
 // screens
-import TopSection from './screens/TopSection/TopSection';
-import HomesQuestLoves from './screens/HomesQuestsLowes/HomesQuestLoves';
-import AvailableHotels from './screens/AvailableHotels/AvailableHotels';
+import HomePage from './screens/HomePage/HomePage';
+
+// components
+import SingInPage from './components/SingInPage/SingInPage';
+import SingOutPage from './components/SingOutPage/SingOutPage';
 
 // styles
 import './index.css';
 
 const App = () => {
   const navigate = useNavigate();
-  const { user, setHotels } = useContext(MainContext);
+  const { user } = useContext(MainContext);
 
   useEffect(() => {
-    !(user === null) ? navigate('/') : navigate('/singIn');
-
-    return function cleanUp() {
-      setHotels([]);
-    };
+    user ? navigate('/') : navigate('/singIn');
   }, [user]);
 
   return (
     <>
-      <TopSection />
-      {user && (
-      <>
-        <AvailableHotels />
-        <HomesQuestLoves />
-      </>
-      )}
+      <Routes>
+        <Route path="*" element={<HomePage />} />
+        <Route path="/singIn/*" element={<SingInPage />} />
+        <Route path="/singOut" element={<SingOutPage />} />
+      </Routes>
     </>
   );
 };
 
 export default App;
+

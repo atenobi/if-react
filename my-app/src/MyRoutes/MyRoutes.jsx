@@ -3,9 +3,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MyRoutes = ({ path, element }) => (
-  <Routes>
-    <Route path={path} element={element} />
-  </Routes>
+  <>
+    <Routes>
+      <Route path={path} element={element} />
+    </Routes>
+  </>
 );
 
 MyRoutes.propTypes = {

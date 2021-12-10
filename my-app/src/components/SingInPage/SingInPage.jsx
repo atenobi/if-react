@@ -10,6 +10,9 @@ import mailVerification from '../../constants/mailVerification';
 // styles
 import './index.css';
 
+// menu component
+import TopSectionHeader from '../../containers/TopSectionHeader/TopSectionHeader';
+
 const SingInPage = () => {
   const { setUser, setPassword } = useContext(MainContext);
   const navigate = useNavigate();
@@ -39,40 +42,45 @@ const SingInPage = () => {
   };
 
   return (
-    <div className="sing_in_container">
-      <h1 className="text_lg">Sing in</h1>
-      <form
-        className="sing_in_form"
-        onSubmit={handleSubmit}
-      >
-        <div className="sing_in_input_container">
-          <label className="text_sm" htmlFor="name">
-            Email address
+    <div className="block_body top_section">
+      <div className="container">
+        <TopSectionHeader />
+        <div className="sing_in_container">
+          <h1 className="text_lg">Sing in</h1>
+          <form
+            className="sing_in_form"
+            onSubmit={handleSubmit}
+          >
+            <div className="sing_in_input_container">
+              <label className="text_sm" htmlFor="name">
+                Email address
+                <input
+                  className="sing_in_input"
+                  type="text"
+                  name="mail"
+                  onChange={(e) => handleChange(e, setNewUser)}
+                />
+              </label>
+            </div>
+            <div className="sing_in_input_container">
+              <label className="text_sm" htmlFor="password">
+                Password
+                <input
+                  className="sing_in_input"
+                  type="text"
+                  name="password"
+                  onChange={(e) => handleChange(e, setNewPassword)}
+                />
+              </label>
+            </div>
             <input
-              className="sing_in_input"
-              type="text"
-              name="mail"
-              onChange={(e) => handleChange(e, setNewUser)}
+              className="text_lg sing_in_submit_button"
+              type="submit"
+              value="Sign in"
             />
-          </label>
+          </form>
         </div>
-        <div className="sing_in_input_container">
-          <label className="text_sm" htmlFor="password">
-            Password
-            <input
-              className="sing_in_input"
-              type="text"
-              name="password"
-              onChange={(e) => handleChange(e, setNewPassword)}
-            />
-          </label>
-        </div>
-        <input
-          className="text_lg sing_in_submit_button"
-          type="submit"
-          value="Sign in"
-        />
-      </form>
+      </div>
     </div>
   );
 };

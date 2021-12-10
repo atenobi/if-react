@@ -43,11 +43,7 @@ const TopSectionHeader = () => {
               cssClass={!user ? cssClass.imagePushed : cssClass.accountCircle}
             />
           </Link>
-          <MyRoutes
-            path="/singOut"
-            element={<SingOutPage />}
-          />
-
+          <MyRoutes path="/singOut" element={<SingOutPage />} />
         </div>
       </div>
     </div>

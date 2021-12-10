@@ -16,27 +16,29 @@ const SingOutPage = () => {
     e.preventDefault();
     setUser(null);
     setPassword(null);
-    navigate('/');
+    navigate('/singIn');
   };
 
   return (
-    <div className="sing_out_container">
-      <h1 className="text_lg">Sing out</h1>
+    <div className="block_body top_section">
+      <div className="sing_out_container">
+        <h1 className="text_lg">Sing out</h1>
 
-      <button
-        className="text_lg sing_out_submit_button"
-        type="submit"
-        onClick={(e) => handleSubmit(e)}
-      >
-        Sign out
-      </button>
-      <button
-        className="text_lg sing_out_submit_button"
-        type="submit"
-        onClick={goBack}
-      >
-        Cancel
-      </button>
+        <button
+          className="text_lg sing_out_submit_button"
+          type="submit"
+          onClick={(e) => handleSubmit(e)}
+        >
+          Sign out
+        </button>
+        <button
+          className="text_lg sing_out_submit_button"
+          type="submit"
+          onClick={goBack}
+        >
+          Cancel
+        </button>
+      </div>
     </div>
   );
 };
