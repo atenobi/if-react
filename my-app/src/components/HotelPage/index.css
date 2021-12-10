@@ -36,7 +36,9 @@
     padding-top: 24px;
 }
 
-.back_link {
+.back_button {
+    outline: none;
+    border: hidden;
     width: 100px;
     height: 40px;
     text-align: center;
@@ -47,6 +49,6 @@
     margin: 40px;
 }
 
-.back_link:hover {
+.back_button:hover {
     background-color: var(--primary-dark);
 }

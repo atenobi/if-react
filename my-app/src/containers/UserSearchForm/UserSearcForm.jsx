@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, useEffect, useState } from 'react';
+
+// context
+import MainContext from '../../Contexts/MainContext';
 
 // components
 import SearchInput from '../../components/SearchInput/SearchInput';
@@ -16,7 +18,8 @@ import saveParamsToUrl from '../../utils/saveParamsToUrl';
 import './index.css';
 import Calendar from '../../components/Calendar/Calendar';
 
-const UserSearchForm = ({ setHotels }) => {
+const UserSearchForm = () => {
+  const { setHotels } = useContext(MainContext);
   const hotelsApi = `${baseURL}hotels?`;
   const [userStr, setUserStr] = useState('');
   const [error, setError] = useState(null);
@@ -48,7 +51,7 @@ const UserSearchForm = ({ setHotels }) => {
     }
   };
 
-  const visibilityStatusPersonCounter = (e) => {
+  const visibilityStatusPersonCounter = () => {
     if (!personsCounter) {
       setPersonsCounter(true);
     } else {
@@ -85,7 +88,7 @@ const UserSearchForm = ({ setHotels }) => {
 
   return (
     <>
-      <div className="container">
+      <div className="top_section_form__container">
         <div className="top_section__form">
           <div className="top_section__form--input_container">
             <SearchInput text="New York" onChangeFunc={handleChange} />
@@ -123,10 +126,6 @@ const UserSearchForm = ({ setHotels }) => {
       </div>
     </>
   );
-};
-
-UserSearchForm.proTypes = {
-  setHotels: PropTypes.func.isRequired,
 };
 
 export default UserSearchForm;

@@ -1,5 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+
+// context
+import MainContext from '../../Contexts/MainContext';
 
 // components
 import TopSectionHeader from '../../containers/TopSectionHeader/TopSectionHeader';
@@ -10,19 +12,25 @@ import TopSectionShops from '../../components/TopSectionShops/TopSectionShops';
 // styles
 import './index.css';
 
-const TopSection = ({ setHotels }) => (
-  <div className="block_body top_section">
-    <div className="container">
-      <TopSectionHeader />
-      <TopSectionTitle />
-      <UserSearchForm setHotels={setHotels} />
-      <TopSectionShops />
+const TopSection = () => {
+  const { user } = useContext(MainContext);
+  return (
+    <div className="block_body top_section">
+      <div className="container">
+        <TopSectionHeader />
+        {user ? (
+          <>
+            <TopSectionTitle />
+            <UserSearchForm />
+            <TopSectionShops />
+          </>
+        ) : (
+          <>
+          </>
+        )}
+      </div>
     </div>
-  </div>
-);
-
-TopSection.propTypes = {
-  setHotels: PropTypes.func.isRequired,
+  );
 };
 
 export default TopSection;

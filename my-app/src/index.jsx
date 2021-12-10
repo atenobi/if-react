@@ -5,11 +5,14 @@ import { BrowserRouter } from 'react-router-dom';
 // styles
 import './index.css';
 import App from './App';
+import MainProvider from './Contexts/MainProvider';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <MainProvider>
+        <App />
+      </MainProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),

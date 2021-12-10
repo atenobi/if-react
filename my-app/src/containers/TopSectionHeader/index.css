@@ -66,3 +66,13 @@
     width: 40px;
     height: 40px;
 }
+
+.top_section__settings--account_circle:hover {
+    fill: var(--secondary);
+}
+
+.top_section__settings--image-pushed {
+    fill: var(--secondary);
+    width: 40px;
+    height: 40px;
+}
