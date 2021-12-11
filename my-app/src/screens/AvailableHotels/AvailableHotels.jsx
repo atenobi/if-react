@@ -1,13 +1,20 @@
-import React, { useContext } from 'react';
-
-// context
-import MainContext from '../../Contexts/MainContext';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 // component
 import MainSection from '../MainSection/MainSection';
 
+import { fetchHotels } from '../../store/asyncActions/fetchHotels';
+
 const AvailableHotels = () => {
-  const { hotels } = useContext(MainContext);
+  const dispatch = useDispatch();
+  const hotels = useSelector((state) => state.hotels.hotels);
+  const [load, setLoad] = useState(false);
+
+  useEffect(() => {
+    dispatch(fetchHotels());
+    setLoad(true);
+  }, [load]);
 
   return (
     <div className="block_body">

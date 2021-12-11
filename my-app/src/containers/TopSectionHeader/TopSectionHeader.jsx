@@ -1,8 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-
-// context
-import MainContext from '../../Contexts/MainContext';
+import { useSelector } from 'react-redux';
 
 // components
 import TextLink from '../../components/links/TextLink';
@@ -16,7 +14,7 @@ import MyRoutes from '../../MyRoutes/MyRoutes';
 import './index.css';
 
 const TopSectionHeader = () => {
-  const { user } = useContext(MainContext);
+  const user = useSelector((state) => state.user.user);
   const cssClass = {
     logo: 'top_section--logo',
     stays: 'top_section__nav--link stays text_no_decor text_lg',

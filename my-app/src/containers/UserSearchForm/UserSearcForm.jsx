@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-
-// context
-import MainContext from '../../Contexts/MainContext';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 // components
 import SearchInput from '../../components/SearchInput/SearchInput';
+import Calendar from '../../components/Calendar/Calendar';
 import Persons from '../../components/Persons/Persons';
 import SearchButton from '../../components/SearchButton/SearchButton';
 
@@ -13,19 +12,15 @@ import baseURL from '../../constants/baseURL';
 
 // functions helpers
 import saveParamsToUrl from '../../utils/saveParamsToUrl';
+import { fetchHotels } from '../../store/asyncActions/fetchHotels';
 
 // styles
 import './index.css';
-import Calendar from '../../components/Calendar/Calendar';
 
 const UserSearchForm = () => {
-  const { setHotels } = useContext(MainContext);
-  const hotelsApi = `${baseURL}hotels?`;
-  const [userStr, setUserStr] = useState('');
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const dispatch = useDispatch();
   const [apiHotels, setApiHotels] = useState([]);
-
+  const [userStr, setUserStr] = useState('');
   const [cal1, setCal1] = useState(false);
   const [cal2, setCal2] = useState(false);
   const [personsCounter, setPersonsCounter] = useState(false);
@@ -59,31 +54,10 @@ const UserSearchForm = () => {
     }
   };
 
-  useEffect(() => {
-    fetch(apiHotels)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setHotels(result);
-        },
-
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        },
-      );
-    if (error) {
-      console.log(error.message);
-    }
-    if (!isLoaded) {
-      console.log('Loading...');
-    }
-  }, [apiHotels]);
-
   const handleClick = (e) => {
     e.preventDefault();
-    setApiHotels(saveParamsToUrl('search', userStr, hotelsApi));
+    setApiHotels(saveParamsToUrl('search', userStr, `${baseURL}hotels?`));
+    dispatch(fetchHotels(apiHotels));
   };
 
   return (

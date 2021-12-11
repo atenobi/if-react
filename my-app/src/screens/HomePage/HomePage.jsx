@@ -1,17 +1,13 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-import MainContext from '../../Contexts/MainContext';
 // screens
 import TopSection from '../TopSection/TopSection';
 import HomesQuestLoves from '../HomesQuestsLowes/HomesQuestLoves';
 import AvailableHotels from '../AvailableHotels/AvailableHotels';
 
 const HomePage = () => {
-  const { user, setHotels } = useContext(MainContext);
-
-  useEffect(() => function cleanUp() {
-    setHotels([]);
-  }, [user]);
+  const user = useSelector((state) => state.user.user);
 
   return (
     <>

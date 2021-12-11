@@ -1,21 +1,24 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-// context
-import MainContext from '../../Contexts/MainContext';
+import { removeUserAction } from '../../store/userReducer';
+import { removePasswordAction } from '../../store/passwordReducer';
 
 // styles
 import './index.css';
 
 const SingOutPage = () => {
-  const { setUser, setPassword } = useContext(MainContext);
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUser(null);
-    setPassword(null);
+    dispatch(removeUserAction(null));
+    dispatch(removePasswordAction(null));
+
     navigate('/singIn');
   };
 

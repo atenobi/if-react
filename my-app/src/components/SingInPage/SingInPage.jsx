@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-// context
-import MainContext from '../../Contexts/MainContext';
+import { addUserAction } from '../../store/userReducer';
+import { addPasswordAction } from '../../store/passwordReducer';
 
 // functions
 import mailVerification from '../../constants/mailVerification';
@@ -14,7 +15,7 @@ import './index.css';
 import TopSectionHeader from '../../containers/TopSectionHeader/TopSectionHeader';
 
 const SingInPage = () => {
-  const { setUser, setPassword } = useContext(MainContext);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const goBack = (step) => navigate(step);
   const [newUser, setNewUser] = useState('');
@@ -28,8 +29,8 @@ const SingInPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (mailVerification(newUser) && newPassword) {
-      setUser(newUser);
-      setPassword(newPassword);
+      dispatch(addUserAction(newUser));
+      dispatch(addPasswordAction(newPassword));
     } else if (!mailVerification(newUser)) {
       e.target.firstChild.className = 'error_message text_sm';
       e.target.firstChild.textContent = 'Please check the correctness of your mail.';

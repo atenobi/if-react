@@ -1,40 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+// screens
 import MainSection from '../MainSection/MainSection';
 
-// constants
-import baseURL from '../../constants/baseURL';
+// async fetcher hotels
+import { fetchFavoriteHotels } from '../../store/asyncActions/fetchFavoriteHotels';
 
 const HomesQuestLoves = () => {
-  const [loadStatus, setLoadStatus] = useState(false);
-  let error = null;
-  const [hotels, setHotels] = useState([]);
+  const favoriteHotels = useSelector((state) => state.favoriteHotels.favoriteHotels);
+  const dispatch = useDispatch();
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
-    fetch(`${baseURL}hotels/popular`)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setHotels(result);
-          setLoadStatus(true);
-        },
-        (err) => {
-          error += err;
-          setLoadStatus(true);
-        },
-      );
-    return function cleanup() {
-      setHotels([]);
-    };
-  }, [loadStatus]);
+    dispatch(fetchFavoriteHotels());
+    setLoad(true);
+  }, [load]);
 
-  if (error) {
-    return <div>{error.message}</div>;
-  } if (!loadStatus) {
-    return <div>Загрузка...</div>;
-  }
   return (
     <div className="block_body">
-      <MainSection title="Homes guests loves" array={hotels.slice(0, 4)} />
+      <MainSection title="Homes guests loves" array={favoriteHotels.slice(0, 4)} />
     </div>
   );
 };

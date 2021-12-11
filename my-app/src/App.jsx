@@ -1,8 +1,9 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-// contexts
-import MainContext from './Contexts/MainContext';
+// // contexts
+// import MainContext from './Contexts/MainContext';
 
 // screens
 import HomePage from './screens/HomePage/HomePage';
@@ -16,7 +17,7 @@ import './index.css';
 
 const App = () => {
   const navigate = useNavigate();
-  const { user } = useContext(MainContext);
+  const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
     user ? navigate('/') : navigate('/singIn');
@@ -34,4 +35,3 @@ const App = () => {
 };
 
 export default App;
-
