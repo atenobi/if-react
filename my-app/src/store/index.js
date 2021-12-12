@@ -1,17 +1,13 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { persistStore } from 'redux-persist';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
-// reducers
-import { userReducer } from './userReducer';
-import { passwordReducer } from './passwordReducer';
-import { hotelsReducer } from './hotelsReducer';
-
-const rootReducer = combineReducers({
-  user: userReducer,
-  password: passwordReducer,
-  hotels: hotelsReducer,
-  favoriteHotels: hotelsReducer,
-});
+// root reducer
+import rootReducer from './rootReducer';
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+
+export const persistor = persistStore(store);
+
+export default { store, persistor };
