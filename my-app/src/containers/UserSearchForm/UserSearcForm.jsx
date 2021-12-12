@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 // components
 import SearchInput from '../../components/SearchInput/SearchInput';
@@ -16,9 +16,11 @@ import { fetchHotels } from '../../store/asyncActions/fetchHotels';
 
 // styles
 import './index.css';
+import { clearHotelsAction } from '../../store/hotelsReducer';
 
 const UserSearchForm = () => {
   const dispatch = useDispatch();
+  const hotels = useSelector((state) => state.hotels.hotels);
   const [apiHotels, setApiHotels] = useState([]);
   const [userStr, setUserStr] = useState('');
   const [cal1, setCal1] = useState(false);
@@ -54,11 +56,19 @@ const UserSearchForm = () => {
     }
   };
 
-  const handleClick = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setApiHotels(saveParamsToUrl('search', userStr, `${baseURL}hotels?`));
-    dispatch(fetchHotels(apiHotels));
   };
+
+  useEffect(() => {
+    if (hotels.length > 0) {
+      dispatch(clearHotelsAction());
+      dispatch(fetchHotels(apiHotels));
+    } else {
+      dispatch(fetchHotels(apiHotels));
+    }
+  }, [apiHotels]);
 
   return (
     <>
@@ -94,7 +104,7 @@ const UserSearchForm = () => {
           </div>
 
           <div className="top_section__form--input_container">
-            <SearchButton text="Search" onClickFunc={handleClick} />
+            <SearchButton text="Search" onClickFunc={handleSubmit} />
           </div>
         </div>
       </div>

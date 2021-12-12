@@ -9,7 +9,7 @@ export const fetchHotels = (url) => (dispatch) => {
         dispatch(addHotelsAction(json));
       },
       (err) => {
-        console.log(err.text);
+        console.log(err);
       },
     );
 };
