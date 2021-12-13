@@ -5,7 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import MainSection from '../MainSection/MainSection';
 
 // async fetcher hotels
-import { fetchFavoriteHotels } from '../../store/asyncActions/fetchFavoriteHotels';
+import { fetchHotels } from '../../store/asyncActions/fetchHotels';
+
+// constants
+import baseURL from '../../constants/baseURL';
 
 const HomesQuestLoves = () => {
   const favoriteHotels = useSelector((state) => state.favoriteHotels.favoriteHotels);
@@ -13,7 +16,7 @@ const HomesQuestLoves = () => {
   const [load, setLoad] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchFavoriteHotels());
+    dispatch(fetchHotels(`${baseURL}hotels/popular`));
     setLoad(true);
   }, [load]);
 

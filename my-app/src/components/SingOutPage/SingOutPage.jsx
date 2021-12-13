@@ -2,8 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { removeUserAction } from '../../store/userReducer';
-import { removePasswordAction } from '../../store/passwordReducer';
+// action creators
+import { removeUserAction, removePasswordAction } from '../../store/userReducer';
 
 // styles
 import './index.css';

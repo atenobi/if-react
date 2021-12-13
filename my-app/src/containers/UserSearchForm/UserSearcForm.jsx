@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+// action creators
+import { clearHotelsAction } from '../../store/hotelsReducer';
+
 // components
 import SearchInput from '../../components/SearchInput/SearchInput';
 import Calendar from '../../components/Calendar/Calendar';
@@ -16,7 +19,6 @@ import { fetchHotels } from '../../store/asyncActions/fetchHotels';
 
 // styles
 import './index.css';
-import { clearHotelsAction } from '../../store/hotelsReducer';
 
 const UserSearchForm = () => {
   const dispatch = useDispatch();

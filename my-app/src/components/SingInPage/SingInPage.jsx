@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { addUserAction } from '../../store/userReducer';
-import { addPasswordAction } from '../../store/passwordReducer';
+// action creators
+import { addUserAction, addPasswordAction } from '../../store/userReducer';
 
 // functions
 import mailVerification from '../../constants/mailVerification';
