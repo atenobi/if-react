@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 // action creators
-import { removeUserAction, removePasswordAction } from '../../store/userReducer';
+import { removeUserAction } from '../../store/autorization';
 
 // styles
 import './index.css';
@@ -16,8 +16,7 @@ const SingOutPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(removeUserAction(null));
-    dispatch(removePasswordAction(null));
+    dispatch(removeUserAction());
 
     navigate('/singIn');
   };

@@ -2,9 +2,6 @@ import React, { useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-// // contexts
-// import MainContext from './Contexts/MainContext';
-
 // screens
 import HomePage from './screens/HomePage/HomePage';
 
@@ -17,10 +14,14 @@ import './index.css';
 
 const App = () => {
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.user.userMail);
 
   useEffect(() => {
-    user ? navigate('/') : navigate('/singIn');
+    if (user) {
+      navigate('/');
+    } else {
+      navigate('/singIn');
+    }
   }, [user]);
 
   return (

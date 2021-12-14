@@ -3,18 +3,17 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 // reducers
-import { userReducer, passwordReducer } from './userReducer';
+import { authorization } from './autorization';
 import { hotelsReducer } from './hotelsReducer';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'password', 'hotels', 'favoriteHotels'],
+  whitelist: ['user', 'hotels', 'favoriteHotels'],
 };
 
 const rootReducer = combineReducers({
-  user: userReducer,
-  password: userReducer,
+  user: authorization,
   hotels: hotelsReducer,
   favoriteHotels: hotelsReducer,
 });

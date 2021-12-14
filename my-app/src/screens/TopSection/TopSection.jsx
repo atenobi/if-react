@@ -11,7 +11,7 @@ import TopSectionShops from '../../components/TopSectionShops/TopSectionShops';
 import './index.css';
 
 const TopSection = () => {
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.user.userMail);
   return (
     <div className="block_body top_section">
       <div className="container">

@@ -14,7 +14,7 @@ import MyRoutes from '../../MyRoutes/MyRoutes';
 import './index.css';
 
 const TopSectionHeader = () => {
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.user.userMail);
   const cssClass = {
     logo: 'top_section--logo',
     stays: 'top_section__nav--link stays text_no_decor text_lg',

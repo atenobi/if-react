@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 // action creators
-import { addUserAction, addPasswordAction } from '../../store/userReducer';
+import { addUserAction, addPasswordAction } from '../../store/autorization';
 
 // functions
 import mailVerification from '../../constants/mailVerification';

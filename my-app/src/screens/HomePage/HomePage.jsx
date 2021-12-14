@@ -7,7 +7,7 @@ import HomesQuestLoves from '../HomesQuestsLowes/HomesQuestLoves';
 import AvailableHotels from '../AvailableHotels/AvailableHotels';
 
 const HomePage = () => {
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.user.userMail);
 
   return (
     <>
