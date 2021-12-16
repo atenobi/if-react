@@ -19,9 +19,7 @@ const AvailableHotels = () => {
 
   return (
     <div className="block_body">
-      {(searchedHotels?.length > 0
-          || userSearchHotelString !== 'empty')
-        && <MainSection title="Available hotels" array={searchedHotels.slice(0, 4)} />}
+      {searchedHotels?.length && <MainSection title="Available hotels" array={searchedHotels.slice(0, 4)} />}
     </div>
   );
 };
