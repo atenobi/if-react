@@ -17,5 +17,5 @@ export const authorization = (state = user, action) => {
 };
 
 export const addUserAction = (payload) => ({ type: 'ADD_USER_MAIL', payload });
-export const removeUserAction = () => ({ type: 'REMOVE_USER' });
 export const addPasswordAction = (payload) => ({ type: 'ADD_USER_PASSWORD', payload });
+export const removeUserAction = () => ({ type: 'REMOVE_USER' });

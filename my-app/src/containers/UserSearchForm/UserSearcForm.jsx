@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 // action creators
-import { clearHotelsAction } from '../../store/hotelsReducer';
+import { clearUserSearchHotelAction, userSearchHotelAction } from '../../store/userSearchReducer';
 
 // components
 import SearchInput from '../../components/SearchInput/SearchInput';
@@ -10,20 +10,11 @@ import Calendar from '../../components/Calendar/Calendar';
 import Persons from '../../components/Persons/Persons';
 import SearchButton from '../../components/SearchButton/SearchButton';
 
-// constants
-import baseURL from '../../constants/baseURL';
-
-// functions helpers
-import saveParamsToUrl from '../../utils/saveParamsToUrl';
-import { fetchHotels } from '../../store/asyncActions/fetchHotels';
-
 // styles
 import './index.css';
 
 const UserSearchForm = () => {
   const dispatch = useDispatch();
-  const hotels = useSelector((state) => state.hotels.hotels);
-  const [apiHotels, setApiHotels] = useState([]);
   const [userStr, setUserStr] = useState('');
   const [cal1, setCal1] = useState(false);
   const [cal2, setCal2] = useState(false);
@@ -60,17 +51,9 @@ const UserSearchForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setApiHotels(saveParamsToUrl('search', userStr, `${baseURL}hotels?`));
+    dispatch(clearUserSearchHotelAction());
+    dispatch(userSearchHotelAction(userStr));
   };
-
-  useEffect(() => {
-    if (hotels.length > 0) {
-      dispatch(clearHotelsAction());
-      dispatch(fetchHotels(apiHotels));
-    } else {
-      dispatch(fetchHotels(apiHotels));
-    }
-  }, [apiHotels]);
 
   return (
     <>

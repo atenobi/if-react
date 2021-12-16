@@ -1,28 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 // screens
 import MainSection from '../MainSection/MainSection';
 
-// async fetcher hotels
-import { fetchHotels } from '../../store/asyncActions/fetchHotels';
-
-// constants
-import baseURL from '../../constants/baseURL';
-
 const HomesQuestLoves = () => {
-  const favoriteHotels = useSelector((state) => state.favoriteHotels.favoriteHotels);
-  const dispatch = useDispatch();
-  const [load, setLoad] = useState(false);
-
-  useEffect(() => {
-    dispatch(fetchHotels(`${baseURL}hotels/popular`));
-    setLoad(true);
-  }, [load]);
+  const hotels = useSelector((state) => state.hotels.hotels);
 
   return (
     <div className="block_body">
-      <MainSection title="Homes guests loves" array={favoriteHotels.slice(0, 4)} />
+      <MainSection title="Homes guests loves" array={hotels.slice(0, 4)} />
     </div>
   );
 };
