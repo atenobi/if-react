@@ -1,7 +1,5 @@
-import React, { useContext } from 'react';
-
-// context
-import MainContext from '../../Contexts/MainContext';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 // components
 import TopSectionHeader from '../../containers/TopSectionHeader/TopSectionHeader';
@@ -13,7 +11,7 @@ import TopSectionShops from '../../components/TopSectionShops/TopSectionShops';
 import './index.css';
 
 const TopSection = () => {
-  const { user } = useContext(MainContext);
+  const user = useSelector((state) => state.user.userMail);
   return (
     <div className="block_body top_section">
       <div className="container">

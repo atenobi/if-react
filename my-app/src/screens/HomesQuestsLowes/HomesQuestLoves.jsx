@@ -1,37 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+// screens
 import MainSection from '../MainSection/MainSection';
 
-// constants
-import baseURL from '../../constants/baseURL';
-
 const HomesQuestLoves = () => {
-  const [loadStatus, setLoadStatus] = useState(false);
-  let error = null;
-  const [hotels, setHotels] = useState([]);
+  const hotels = useSelector((state) => state.hotels.hotels);
 
-  useEffect(() => {
-    fetch(`${baseURL}hotels/popular`)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setHotels(result);
-          setLoadStatus(true);
-        },
-        (err) => {
-          error += err;
-          setLoadStatus(true);
-        },
-      );
-    return function cleanup() {
-      setHotels([]);
-    };
-  }, [loadStatus]);
-
-  if (error) {
-    return <div>{error.message}</div>;
-  } if (!loadStatus) {
-    return <div>Загрузка...</div>;
-  }
   return (
     <div className="block_body">
       <MainSection title="Homes guests loves" array={hotels.slice(0, 4)} />

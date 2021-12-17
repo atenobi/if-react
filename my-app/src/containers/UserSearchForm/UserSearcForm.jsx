@@ -1,31 +1,21 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-// context
-import MainContext from '../../Contexts/MainContext';
+// action creators
+import { clearUserSearchHotelAction, userSearchHotelAction } from '../../store/userSearchReducer';
 
 // components
 import SearchInput from '../../components/SearchInput/SearchInput';
+import Calendar from '../../components/Calendar/Calendar';
 import Persons from '../../components/Persons/Persons';
 import SearchButton from '../../components/SearchButton/SearchButton';
 
-// constants
-import baseURL from '../../constants/baseURL';
-
-// functions helpers
-import saveParamsToUrl from '../../utils/saveParamsToUrl';
-
 // styles
 import './index.css';
-import Calendar from '../../components/Calendar/Calendar';
 
 const UserSearchForm = () => {
-  const { setHotels } = useContext(MainContext);
-  const hotelsApi = `${baseURL}hotels?`;
+  const dispatch = useDispatch();
   const [userStr, setUserStr] = useState('');
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [apiHotels, setApiHotels] = useState([]);
-
   const [cal1, setCal1] = useState(false);
   const [cal2, setCal2] = useState(false);
   const [personsCounter, setPersonsCounter] = useState(false);
@@ -59,31 +49,10 @@ const UserSearchForm = () => {
     }
   };
 
-  useEffect(() => {
-    fetch(apiHotels)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setHotels(result);
-        },
-
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        },
-      );
-    if (error) {
-      console.log(error.message);
-    }
-    if (!isLoaded) {
-      console.log('Loading...');
-    }
-  }, [apiHotels]);
-
-  const handleClick = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setApiHotels(saveParamsToUrl('search', userStr, hotelsApi));
+    dispatch(clearUserSearchHotelAction());
+    dispatch(userSearchHotelAction(userStr));
   };
 
   return (
@@ -120,7 +89,7 @@ const UserSearchForm = () => {
           </div>
 
           <div className="top_section__form--input_container">
-            <SearchButton text="Search" onClickFunc={handleClick} />
+            <SearchButton text="Search" onClickFunc={handleSubmit} />
           </div>
         </div>
       </div>

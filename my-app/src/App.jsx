@@ -1,8 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-
-// contexts
-import MainContext from './Contexts/MainContext';
+import { useSelector } from 'react-redux';
 
 // screens
 import HomePage from './screens/HomePage/HomePage';
@@ -16,10 +14,14 @@ import './index.css';
 
 const App = () => {
   const navigate = useNavigate();
-  const { user } = useContext(MainContext);
+  const user = useSelector((state) => state.user.userMail);
 
   useEffect(() => {
-    user ? navigate('/') : navigate('/singIn');
+    if (user) {
+      navigate('/');
+    } else {
+      navigate('/singIn');
+    }
   }, [user]);
 
   return (
@@ -34,4 +36,3 @@ const App = () => {
 };
 
 export default App;
-
